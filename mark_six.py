@@ -85,11 +85,11 @@ class User:
         print('==============================DETAILS==============================')
         print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format('#', 'name', 'chosen numbers', 'prize', 'profit', ))
         for time in range(int(times)):
-            print('{0:^5} {1:<15}{2:<25} {3:<15} {4:<20}'.format(time + 1, self.name if time == 0 else '',
+            print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format(time + 1, self.name if time == 0 else '',
                                                                  str(self.cn[time]), self.prize[time],
                                                                  self.profit[time]))
-        print('{0:^5} {1:<15} {2:<15}'.format('#', 'total profit', 'balance'))
-        print('{0:^5} {1:<15} {2:<15}'.format('#', self.t_profit, self.balance))
+        print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format('#', '', 'lottery result', 'total profit', 'balance'))
+        print('{0:^5} {1:<15} {2:<15} {3:<15} {4:<20}'.format('#', '', str(drawn), self.t_profit, self.balance))
         print('===================================================================')
 
     def detail_bot(self):
