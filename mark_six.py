@@ -22,8 +22,8 @@ def rand_choose():  # 機選模塊
 def choose():  # 選擇號碼
     count = 0
     choice0 = []
-    decision = input('你想手動選擇一組六合彩號碼嗎？[y/n]:')
     while True:
+        decision = input('你想手動選擇一組六合彩號碼嗎？[y/n]:')
         if decision == 'n':
             choice0 = rand_choose()
             print('爲你隨機選擇一個組合：', choice0)
@@ -115,7 +115,7 @@ class User:
 # ==========================================================================================
 name = input('新建一個昵稱：')
 player = User(name)  # 玩家初始化
-print('你好{0}！\n歡迎游玩六合彩模擬器\n你的初始基金為{1}\n祝你好運！'.format(player.name, player.balance))
+print('你好{0}！\n歡迎游玩六合彩模擬器\n你的初始基金為{1}元\n祝你好運！'.format(player.name, player.balance))
 pool = 0
 
 while True:
@@ -125,7 +125,7 @@ while True:
     dict1 = {'1st': 0, '2nd': 0, '3rd': 0, '4th': 9600, '5th': 640, '6th': 320, '7th': 40, 'none': 0}  # 獲獎金額統計
     drawn = lottery()  # 開獎
     while True:
-        times = input('輸入你想要下的注數（每注十元）：')
+        times = input('輸入你想要下的注數（每注10元）：')
         try:  # 檢測輸入是否合法
             int(times)
         except ValueError:
