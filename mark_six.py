@@ -89,13 +89,13 @@ class User:
 
     def detail(self):
         print('==============================DETAILS==============================')
-        print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format('#', 'name', 'chosen numbers', 'prize', 'profit', ))
+        print('{0:^5} {1:<15} {2:<30} {3:<15} {4:<20}'.format('#', 'name', 'chosen numbers', 'prize', 'profit', ))
         for time in range(int(times)):
-            print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format(time + 1, self.name if time == 0 else '',
+            print('{0:^5} {1:<15} {2:<30} {3:<15} {4:<20}'.format(time + 1, self.name if time == 0 else '',
                                                                   str(self.cn[time]), self.prize[time],
                                                                   self.profit[time]))
-        print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format('#', '', 'lottery result', 'total profit', 'balance'))
-        print('{0:^5} {1:<15} {2:<15} {3:<15} {4:<20}'.format('#', '', str(drawn), self.t_profit, self.balance))
+        print('{0:^5} {1:<15} {2:<30} {3:<15} {4:<20}'.format('#', '', 'lottery result', 'total profit', 'balance'))
+        print('{0:^5} {1:<15} {2:<30} {3:<15} {4:<20}'.format('#', '', str(drawn), self.t_profit, self.balance))
         print('===================================================================')
 
     def detail_bot(self):
@@ -162,16 +162,16 @@ while True:
         dict1['2nd'] = pool * .15 / dict0['2nd']
     if dict0['1st'] != 0:
         dict1['1st'] = pool * .45 / dict0['1st']
-    if dict1['1st'] * dict0['1st'] < 8000000 and dict0['3rd'] != 0:  # 一等獎獎池不得少於八百萬
+    if dict1['1st'] * dict0['1st'] < 8000000 and dict0['1st'] != 0:  # 一等獎獎池不得少於八百萬
         temp = 8000000 - dict1['1st'] * dict0['1st']
         dict1['1st'] = 8000000
         dict1['2nd'] -= temp * .25 / dict0['2nd']  # 獎金動態調整
         dict1['3rd'] -= temp * .45 / dict0['3rd']  # 獎金動態調整
-    if dict1['1st'] < dict1['2nd'] * 2 and dict0['2nd'] != 0:  # 一等獎不得少於二等獎的兩倍
+    if dict1['1st'] < dict1['2nd'] * 2 and dict0['1st'] != 0:  # 一等獎不得少於二等獎的兩倍
         temp = (dict1['2nd'] * 2 - dict1['1st']) * dict0['2nd']
         dict1['2nd'] = dict1['1st'] / 2
         dict1['3rd'] += temp / dict0['3rd']
-    if dict1['2nd'] < dict1['3rd'] * 2 and dict0['1st'] != 0:  # 二獎不得少於三等獎的兩倍
+    if dict1['2nd'] < dict1['3rd'] * 2 and dict0['2nd'] != 0:  # 二獎不得少於三等獎的兩倍
         temp0 = (dict1['3rd'] * 2 - dict1['2nd']) * dict0['3rd']
         dict1['3rd'] = dict1['2nd'] / 2  # 獎金動態調整
         pool += temp0  # 補回差額給下一輪獎池
