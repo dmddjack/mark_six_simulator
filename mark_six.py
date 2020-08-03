@@ -73,7 +73,7 @@ def prize():  # 判斷中獎模塊
 
 class User:
 
-    def __init__(self, name='', total_profit=0, profit=None, balance=100, chosen_numbers=None, prize=None):
+    def __init__(self, name='', total_profit=0, profit=None, balance=1000, chosen_numbers=None, prize=None):
         self.name = name
         self.profit = profit
         self.t_profit = total_profit
@@ -86,8 +86,8 @@ class User:
         print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format('#', 'name', 'chosen numbers', 'prize', 'profit', ))
         for time in range(int(times)):
             print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format(time + 1, self.name if time == 0 else '',
-                                                                 str(self.cn[time]), self.prize[time],
-                                                                 self.profit[time]))
+                                                                  str(self.cn[time]), self.prize[time],
+                                                                  self.profit[time]))
         print('{0:^5} {1:<15} {2:<25} {3:<15} {4:<20}'.format('#', '', 'lottery result', 'total profit', 'balance'))
         print('{0:^5} {1:<15} {2:<15} {3:<15} {4:<20}'.format('#', '', str(drawn), self.t_profit, self.balance))
         print('===================================================================')
@@ -106,9 +106,10 @@ class User:
         self.prize = prize
 
 
-# ============================================================================
+# ==========================================================================================
 name = input('新建一個昵稱：')
 player = User(name)  # 玩家初始化
+print('你好{0}！\n歡迎游玩六合彩模擬器\n你的初始基金為{1}\n祝你好運！'.format(player.name, player.balance))
 pool = 0
 
 while True:
