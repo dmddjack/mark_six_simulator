@@ -22,25 +22,31 @@ def rand_choose():  # 機選模塊
 def choose():  # 選擇號碼
     count = 0
     choice0 = []
-    decision = input('你想手動選擇一組六合彩號碼嗎？[Y/N]:')
-    if decision == 'N':
-        choice0 = rand_choose()
-        print('爲你隨機選擇一個組合：', choice0)
-    elif decision == 'Y':
-        while count < 6:
-            number = input('請輸入一個數字(1-49)：')  # 手選模塊
-            try:  # 檢測輸入是否合法
-                int(number)
-            except ValueError:
-                print(error)
-                continue
-            if int(number) not in range(1, 50) or int(number) in choice0:
-                print(error)
-                continue
-            choice0.append(int(number))
-            count += 1
-        choice0.sort()
-        print('你選擇了一個組合：', tuple(choice0))
+    decision = input('你想手動選擇一組六合彩號碼嗎？[y/n]:')
+    while True:
+        if decision == 'n':
+            choice0 = rand_choose()
+            print('爲你隨機選擇一個組合：', choice0)
+            break
+        elif decision == 'y':
+            while count < 6:
+                number = input('請輸入一個數字(1-49)：')  # 手選模塊
+                try:  # 檢測輸入是否合法
+                    int(number)
+                except ValueError:
+                    print(error)
+                    continue
+                if int(number) not in range(1, 50) or int(number) in choice0:
+                    print(error)
+                    continue
+                choice0.append(int(number))
+                count += 1
+            choice0.sort()
+            print('你選擇了一個組合：', tuple(choice0))
+            break
+        else:
+            print(error)
+            continue
     return tuple(choice0)
 
 
